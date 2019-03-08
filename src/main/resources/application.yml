@@ -4,6 +4,9 @@ spring:
 
 #Zuul routes. Here for /student path, we are routing to localhost:8090 with extra path after that.
 zuul:
+  host:
+    #With  zuul.host.socket-timeout-millis=30000 -- , we instruct Spring Boot to wait for the response for 30000 ms and then Zuul's internal Hystrix timeout will kick off and show you the error.
+    socket-timeout-millis: 30000
   routes:
     student-service:
       path: /student/**
@@ -24,5 +27,5 @@ server:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka
+      default-zone: http://localhost:8761/eureka      
       
