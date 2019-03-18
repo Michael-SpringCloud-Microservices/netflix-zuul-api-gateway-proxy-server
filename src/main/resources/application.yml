@@ -7,6 +7,8 @@ zuul:
   host:
     #With  zuul.host.socket-timeout-millis=30000 -- , we instruct Spring Boot to wait for the response for 30000 ms and then Zuul's internal Hystrix timeout will kick off and show you the error.
     socket-timeout-millis: 30000
+  # Don't match these, they are handled by controllers in this server, not downstream services
+  ignoredPatterns: /api, /swagger-ui.html, /actuator/**, /swagger-resources/**, /swagger-composite/**, /heartbeat, /service/**
   routes:
     student-service:
       path: /student/**
@@ -14,7 +16,7 @@ zuul:
       service-id: student-service
       stripPrefix: false
  
-#Ribbon is auto integrated with Zuul and for this exercise we are not using that.
+#Ribbon is auto integrated with Zuul , so the value for the following configuration is true by default.
 ribbon:
   eureka:
     #enabled: false
@@ -28,4 +30,3 @@ eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka      
-      
