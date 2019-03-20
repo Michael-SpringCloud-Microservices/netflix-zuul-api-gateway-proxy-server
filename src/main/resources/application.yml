@@ -15,12 +15,15 @@ zuul:
       #url: http://localhost:8090
       service-id: student-service
       stripPrefix: false
+    
  
 #Ribbon is auto integrated with Zuul , so the value for the following configuration is true by default.
 ribbon:
   eureka:
     #enabled: false
     enabled: true
+  # ServerListRefreshInterval is the interval, in milliseconds, between refreshes of Ribbon’s service list.
+  ServerListRefreshInterval: 1000
  
 #Will start the gateway server @8080
 server:
@@ -29,4 +32,4 @@ server:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka      
+      default-zone: http://localhost:8761/eureka 
