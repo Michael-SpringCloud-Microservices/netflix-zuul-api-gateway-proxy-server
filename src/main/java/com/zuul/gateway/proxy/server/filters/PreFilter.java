@@ -32,12 +32,12 @@ public class PreFilter extends ZuulFilter {
 
 	@Override
 	public Object run() {
-		   System.out.println("Inside Pre Filter");
+		System.out.println("Inside Pre Filter");
 
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 
-		System.out.println("Pre Filter -> Request Method : " + request.getMethod() + "Pre Filter ->  Request URL : " + request.getRequestURL().toString());
+		System.out.println("Pre Filter -> Request Method : " + request.getMethod() + " " + "Pre Filter ->  Request URL : " + request.getRequestURL().toString());
 		return null;
 	}
 }
